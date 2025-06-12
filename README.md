@@ -37,7 +37,7 @@ Os dados brutos foram obtidos do Portal de Dados Abertos do Governo, em específ
 
 **Tabelas Normalizadas:**
 - `unidade_de_conservacao`: Cadastro de áreas protegidas.
-- `mutirao_de_limpeza`: Registro de ações coletivas.
+- `mutirao_limpeza`: Registro de ações coletivas.
 
 Essas duas tabelas são resultados da desnormalização de outras 9 tabelas, para otimizar o DuckDB.
 
