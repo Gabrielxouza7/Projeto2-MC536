@@ -90,7 +90,7 @@ Projeto-MC536/
 - **Clonar o Repositório**: Clone este repositório para sua máquina local:
  ```bash
  git clone <repository-url>
- cd Projeto-MC536
+ cd Projeto2-MC536
  ```
 - **Arquivos CSV**: Verifique se os arquivos CSV estão presentes no diretório `/datasets`.
 
