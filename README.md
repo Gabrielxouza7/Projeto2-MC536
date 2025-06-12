@@ -20,7 +20,10 @@ Este projeto utiliza o DuckDB por ser uma solução moderna e otimizada para an�
 - Simplicidade: O DuckDB é serverless e funciona em um único arquivo, eliminando a necessidade de instalar, configurar ou manter um servidor de banco de dados.
 - Performance: Por ser um banco de dados analítico (OLAP) e colunar, ele é extremamente rápido para executar as consultas agregativas, como SUM, COUNT, GROUP BY que são o foco deste projeto.
 - Integração: Possui uma integração nativa e profunda com o ecossistema Python, especialmente com a biblioteca Pandas, permitindo um fluxo de trabalho de análise de dados fluido e eficiente.
- A seguir, é apresentada a visualização do modelo relacional:
+
+Uma justificativa mais completa é encontrada [aqui](porque_DuckDB.txt)
+
+A seguir, é apresentada a visualização do modelo relacional:
 
 **Figura 2:** Modelo Lógico  
 ![Modelo Lógico do Banco de Dados](modelos/modelo_logico.png)  
