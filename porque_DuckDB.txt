@@ -1,0 +1,14 @@
+Justificativa para a Escolha do DuckDB
+
+    Forma de Armazenamento de Ficheiros:
+    O DuckDB opera num modelo serverless, onde toda a base de dados está contida num único ficheiro (ex: banco_projeto2.duckdb), o que contrasta fortemente com o modelo cliente-servidor do PostgreSQL, que exige um processo de servidor a ser executado constantemente. Para um projeto de análise de dados em que a principal interação é local, a simplicidade de gerir um único ficheiro é uma vantagem imensa, eliminando a necessidade de instalação, configuração e manutenção de um servidor, tornando a partilha da base de dados tão simples como enviar um ficheiro.
+
+    Linguagem e Processamento de Consultas:
+    O DuckDB utiliza SQL padrão, o que tornou a migração das consultas do PostgreSQL direta e intuitiva. A sua principal vantagem, no entanto, é ser uma base de dados analítica (OLAP) orientada a colunas, diferentemente do PostgreSQL, o DuckDB armazena todos os valores de uma mesma coluna juntos, permitindo um desempenho muito superior em consultas analíticas, que tipicamente agregam dados de poucas colunas, por exemplo SUM(lixo_total) ou GROUP BY ano. A sua capacidade de processamento de consultas vetorizado executa operações em lotes de dados de uma vez, em vez de linha por linha, acelerando drasticamente as análises.
+
+    Processamento e Controlo de Transações:
+    O DuckDB oferece suporte completo a transações ACID, garantindo a integridade dos dados. Ele utiliza um modelo de concorrência de escritor único / múltiplos leitores. Isso significa que, a qualquer momento, apenas um processo pode escrever na base de dados, enquanto vários podem ler. Para o nosso trabalho, onde a escrita é um único processo de carga de dados e a leitura são as várias consultas de análise, este modelo é perfeitamente adequado e muito menos complexo do que a gestão de múltiplos utilizadores e permissões do PostgreSQL.
+
+    Mecanismos de Recuperação e Segurança:
+    A durabilidade e recuperação dos dados no DuckDB são asseguradas por um mecanismo de Write-Ahead Log (WAL). Este sistema garante que todas as modificações sejam primeiramente registadas num ficheiro de log antes de serem efetivadas no ficheiro principal da base de dados e em caso de uma falha inesperada, este log permite a restauração da base de dados ao seu último estado consistente, preservando a integridade das transações. O modelo de segurança é inerente ao sistema de ficheiros, ou seja, o controle de acesso é determinado diretamente pelas permissões do utilizador sobre o ficheiro .duckdb. Esta abordagem simplifica a gestão de segurança para projetos de análise local, em contraste com a administração de utilizadores e permissões exigida por sistemas como o PostgreSQL.
+
